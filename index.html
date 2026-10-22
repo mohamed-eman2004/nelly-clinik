@@ -91,6 +91,233 @@ body{background:#f5f8fc;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .doc-open{white-space:nowrap}
 .cash-type-edit{border:1px solid #d8e5ed;border-radius:9px;padding:7px;background:#f4fafb;color:#164a5b;font-weight:700;min-width:78px}
 @media(max-width:640px){.search-with-add>.quick-add-btn{min-width:44px}}
+
+/* ================================================================
+   NILI CLINIC | Responsive v6
+   Layout only: desktop, laptop, tablet and phone.
+   Keeps all existing business logic, forms, reports and exports.
+   ================================================================ */
+:root{--mobile-gutter:16px}
+html{max-width:100%;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+body{min-width:0;max-width:100%;overflow-x:clip}
+.app,.main,.container,.form-layout,.form-stack,.summary-side,
+.grid,.grid>* ,.panel,.panel>*,.kpi,.quick,.quick>div,
+.toolbar,.toolbar>*,.statement-paper,.detail-controls,.journal-stack,
+.journal-card,.search-with-add,.search-input-wrap{min-width:0}
+.main{width:100%;max-width:100%}
+.container{width:100%}
+.panel,.kpi,.soft,.statement-paper,.journal-card{max-width:100%}
+.grid>*{max-width:100%}
+/* Large records scroll INSIDE their panel, not the entire web page. */
+.table-wrap,.journal-lines{display:block;min-width:0;max-width:100%;overflow-x:auto;overflow-y:auto;
+    overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;
+    scrollbar-color:#b9cfdb #eef4f8}
+.table-wrap::-webkit-scrollbar,.journal-lines::-webkit-scrollbar{height:8px}
+.table-wrap::-webkit-scrollbar-thumb,.journal-lines::-webkit-scrollbar-thumb{background:#b9cfdb;border-radius:20px}
+.table-wrap::-webkit-scrollbar-track,.journal-lines::-webkit-scrollbar-track{background:#eef4f8}
+.table-wrap>.table,.journal-lines .table{width:max-content;min-width:100%;max-width:none}
+.table th,.table td{vertical-align:middle}
+.panel-title,.section-head,.detail-heading,.statement-head{min-width:0}
+.panel-title>*,.section-head>*,.detail-heading>*,.statement-head>*{min-width:0}
+.kpi-number{overflow-wrap:anywhere;letter-spacing:-.4px;line-height:1.5}
+.chart,.bar-row{min-width:0}
+.bar-row{grid-template-columns:minmax(0,1fr) minmax(38px,2fr) minmax(70px,auto)}
+.bar-row>span:first-child{min-width:0;overflow-wrap:anywhere;line-height:1.6}
+.bar-val{white-space:nowrap;direction:ltr;font-size:12px}
+.grid.two,.grid.three,.grid.four,.grid.metrics{min-width:0}
+.field,.field input,.field textarea,.field select,.toolbar .field,.statement-select select{
+    min-width:0;max-width:100%}
+input,select,textarea{touch-action:manipulation}
+.field input[type="date"],.field input[type="datetime-local"]{min-width:0}
+.top .split{min-width:0;flex:1}
+.top .split>div{min-width:0}
+.top h1{overflow-wrap:anywhere}
+.nav-toggle{touch-action:manipulation}
+.quick-add-btn{min-height:44px}
+.search-input-wrap>.picker-options,.picker-options{max-width:100%;overscroll-behavior:contain}
+.quick-modal-shade{overflow-y:auto;overscroll-behavior:contain}
+.quick-modal{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain}
+.quick-modal-actions{flex-wrap:wrap}
+.detail-controls,.toolbar,.action-strip,.statement-select,.export-group{min-width:0}
+.statement-facts{min-width:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+.statement-facts>div{min-width:0}
+.statement-facts b{overflow-wrap:anywhere}
+.toastbox{max-width:min(400px,calc(100vw - 30px))}
+/* Laptop and small desktop screens */
+@media(max-width:1440px){
+ .container{padding-inline:25px}
+ .top{padding-inline:25px}
+ .grid.metrics{gap:14px}
+ .kpi{padding:17px}
+}
+@media(max-width:1200px){
+ .grid.four,.grid.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .statement-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .form-layout{grid-template-columns:minmax(0,1fr)}
+ .summary-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+ .summary-side .panel+.panel{margin-top:0}
+}
+/* Touch-navigation drawer: mobile and tablets including tablet landscape */
+@media(max-width:1100px){
+ .app{display:block;min-height:100dvh}
+ .app>.sidebar,.app.nav-collapsed>.sidebar{
+   position:fixed;top:0;right:0;left:auto;bottom:0;
+   width:min(305px,88vw);height:100dvh;min-height:0;
+   padding:22px 15px 18px;display:flex;flex-direction:column;
+   opacity:1;pointer-events:auto;overflow-x:hidden;overflow-y:auto;
+   transform:translate3d(105%,0,0);
+   transition:transform .22s ease;z-index:151;
+   box-shadow:-6px 0 42px #10284929;
+ }
+ .app>.sidebar.open,.app.nav-collapsed>.sidebar.open{transform:translate3d(0,0,0)}
+ .sidebar .nav-item,.sidebar .brand,.sidebar .sidebar-bottom,.sidebar .nav-title{min-width:0}
+ .nav-scrim.visible{display:block;position:fixed;inset:0;z-index:149;background:#091e36a8;backdrop-filter:blur(2px)}
+ .btn-close-menu{display:block;min-width:40px;min-height:40px;font-size:17px}
+ .main{display:block;width:100%;min-width:0}
+ .top{padding:13px 20px;min-height:74px}
+ .container{padding:20px 20px 38px}
+ body.nili-menu-open{overflow:hidden}
+ .journal-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+/* Portrait tablet and small laptop */
+@media(max-width:820px){
+ .grid.two{grid-template-columns:minmax(0,1fr)}
+ .container{padding:18px 18px 32px}
+ .top{padding:10px 18px}
+ .grid.two>.panel+.panel{margin-top:0}
+ .quick{padding:18px 20px}
+ .form-layout{gap:15px}
+ .journal-meta{gap:7px}
+ .statement-select{align-items:stretch}
+ .statement-select .field{flex:1 1 220px}
+ .statement-head,.detail-heading{gap:12px}
+ .detail-controls{align-items:stretch}
+ .toolbar .field{flex:1 1 180px}
+ .toolbar .grow{flex:1 1 220px}
+}
+/* Phones, both orientations */
+@media(max-width:640px){
+ :root{--mobile-gutter:14px}
+ .container{padding:16px var(--mobile-gutter) 30px}
+ .top{padding:9px var(--mobile-gutter);min-height:68px;gap:7px}
+ .top .split{gap:10px}
+ .top h1{font-size:19px;line-height:1.3}
+ .top .eyebrow{font-size:10px}
+ .top-tools{display:none}
+ .nav-toggle{height:44px;width:44px;flex:0 0 44px;margin-left:0}
+ .grid.two,.grid.three,.grid.four,.grid.metrics,.summary-side{
+    grid-template-columns:minmax(0,1fr);gap:12px}
+ .grid.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .kpi{padding:13px 12px;border-radius:14px}
+ .kpi-label{font-size:11px}
+ .kpi-number{font-size:clamp(16px,4.5vw,22px);margin:6px 0 2px}
+ .kpi-sub{font-size:10px;line-height:1.5}
+ .quick{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:18px;border-radius:15px}
+ .quick h2{font-size:18px}
+ .quick .btn{align-self:stretch;min-height:44px}
+ .panel{padding:15px;border-radius:15px}
+ .panel-title{font-size:14px;gap:9px;flex-wrap:wrap;margin-bottom:13px}
+ .panel-title .btn{min-height:40px}
+ .section-head{flex-wrap:wrap;align-items:flex-start}
+ .section-head h2{font-size:18px}
+ .section-head>.btn{width:100%;min-height:44px}
+ .form-layout,.form-stack{gap:14px}
+ .field label{font-size:12px}
+ .field input,.field select,.field textarea,.search-input-wrap>input{
+    font-size:16px;min-height:46px;padding:10px 12px}
+ .field textarea{min-height:90px}
+ .tabs{gap:5px;padding:5px;margin-bottom:16px}
+ .tabs .tab{min-width:calc(50% - 5px);flex:1 1 calc(50% - 5px);min-height:43px;padding:9px 6px}
+ .switcher{gap:7px}
+ .switcher button{flex:1 1 auto;min-height:41px;padding:8px 11px}
+ .toolbar{gap:10px;align-items:stretch}
+ .toolbar .field,.toolbar .grow{min-width:0;flex:1 1 100%}
+ .toolbar .btn,.export-group .btn{min-height:42px}
+ .export-group{width:100%}
+ .export-group .btn{flex:1 1 auto}
+ .search-with-add{gap:8px;align-items:center}
+ .search-with-add>.quick-add-btn{width:auto;min-width:44px;max-width:95px;min-height:46px;height:46px;white-space:nowrap;padding:0 8px}
+ .search-with-add>.quick-add-btn span{display:none}
+ .picker-options{max-height:min(260px,40dvh)}
+ .item-mini{flex-wrap:wrap;gap:10px}
+ .item-mini .field,.item-mini .field.short{flex:1 1 calc(50% - 5px);min-width:0;max-width:none}
+ .item-mini>.btn,.item-mini>button{min-height:44px}
+ .action-strip{align-items:stretch;gap:12px}
+ .action-strip>.hint{flex:1 1 100%}
+ .action-strip>.btn{width:100%;min-height:48px;white-space:normal}
+ .summary-total{font-size:26px}
+ .preview-row{gap:8px;flex-wrap:wrap}
+ .bar-row{grid-template-columns:minmax(0,1fr) minmax(34px,1.1fr) minmax(68px,auto);gap:8px;margin:11px 0}
+ .bar-row>span:first-child{font-size:11px}
+ .bar-val{font-size:10.5px}
+ .table{font-size:12px}
+ .table th,.table td{padding:9px 10px}
+ .table button{min-height:36px}
+ .journal-filters,.journal-filters .search-all{grid-template-columns:minmax(0,1fr);grid-column:auto}
+ .journal-card-head{padding:13px;align-items:flex-start}
+ .journal-ident{gap:9px;min-width:0}
+ .journal-ident h3{font-size:14px}
+ .journal-icon{width:36px;height:36px;flex:0 0 36px;font-size:18px}
+ .journal-meta{gap:5px}
+ .journal-meta>span:not(.pill){padding:4px 8px}
+ .journal-lines{margin:0 6px 10px}
+ .journal-lines .table{font-size:11px}
+ .journal-description{padding:10px 13px}
+ .statement-paper{padding:13px;border-radius:13px}
+ .statement-head h3,.detail-heading h3{font-size:19px}
+ .statement-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .statement-facts>div{padding:10px}
+ .statement-facts b{font-size:12px}
+ .statement-current{padding:11px 13px}
+ .statement-current strong{font-size:18px}
+ .statement-select{gap:10px}
+ .statement-select select{width:100%;min-width:0}
+ .detail-controls{gap:10px}
+ .detail-exports{width:100%;gap:7px}
+ .detail-exports .btn{flex:1;min-height:44px}
+ .quick-modal-shade{padding:10px;align-items:center}
+ .quick-modal{max-width:100%;max-height:calc(100dvh - 20px);padding:18px;border-radius:16px;gap:14px}
+ .quick-modal-head h2{font-size:18px}
+ .quick-modal-actions button{flex:1 1 auto;min-height:44px}
+ .toastbox{left:10px;right:10px;bottom:10px;max-width:none}
+ .toast{padding:11px 13px}
+}
+/* Small phones (320–375 px) */
+@media(max-width:375px){
+ :root{--mobile-gutter:10px}
+ .grid.metrics{grid-template-columns:minmax(0,1fr)}
+ .kpi-number{font-size:21px}
+ .top h1{font-size:17px}
+ .panel{padding:12px}
+ .quick{padding:14px}
+ .bar-row{grid-template-columns:minmax(0,1fr) minmax(25px,1fr) minmax(58px,auto);gap:6px}
+ .bar-val{font-size:10px}
+ .statement-facts{grid-template-columns:minmax(0,1fr)}
+ .search-with-add{gap:6px}
+ .search-with-add>.quick-add-btn{min-width:42px;padding:0 6px}
+ .journal-meta{font-size:10px}
+}
+/* Phones in landscape: don't let the drawer or dialogs exceed visible height */
+@media(max-height:510px) and (max-width:1100px){
+ .quick-modal-shade{align-items:start}
+ .quick-modal{max-height:calc(100dvh - 16px)}
+ .sidebar{overscroll-behavior:contain}
+}
+@media(hover:none) and (pointer:coarse){
+ .nav-item,.tab,.switcher button,.btn,.nav-toggle,.quick-add-btn{touch-action:manipulation}
+ .table-wrap,.journal-lines{scrollbar-width:thin}
+}
+@media(prefers-reduced-motion:reduce){
+ .sidebar,.app>.sidebar,.app.nav-collapsed>.sidebar,.nav-toggle,.quick-modal{transition:none!important}
+}
+@media print{
+ body{overflow:visible!important}
+ .container,.main,.panel,.table-wrap{overflow:visible!important;max-width:none}
+ .app{display:block}
+ .nav-scrim{display:none!important}
+}
+
 </style>
 </head>
 <body><div id="app" class="app"></div><div class="toastbox" id="toasts"></div>
@@ -162,9 +389,9 @@ function save(next){try{sessionStorage.setItem(STORAGE_KEY,JSON.stringify(next))
 function newid(prefix){return prefix+'-'+String(state.sequence+1)}
 function mainHeader(){let item=nav.find(x=>x[0]===view)||nav[0];return `<header class="top"><div class="split"><button class="nav-toggle" type="button" id="navtoggle" aria-label="فتح أو إغلاق القائمة الجانبية" aria-expanded="${!sidebarHidden}" title="إظهار / إخفاء القائمة"><span class="nav-burger"><i></i><i></i><i></i></span></button><div><div class="eyebrow">نيلي كلينك / الإدارة المالية</div><h1>${h(item[2])}</h1></div></div><div class="top-tools"><span class="tag">◷ &nbsp;${isoDate(today())}</span><span class="tag"><span class="status-dot" style="background:#26a995"></span>البيانات محفوظة داخل الجلسة</span></div></header>`}
 function sidebar(){return `<aside class="sidebar" id="sidebar"><div class="brand"><div class="brand-mark">N</div><div class="brand-copy"><strong>NILI CLINIC</strong><small>الإدارة المالية والمخزون</small></div><button class="btn-close-menu" id="closemenu" title="إغلاق القائمة" aria-label="إغلاق القائمة">✕</button></div><div class="nav-title">القائمة الرئيسية</div>${nav.map(([id,icon,label])=>`<button class="nav-item ${view===id?'active':''}" data-nav="${id}" title="${h(label)}"><span class="nav-icon">${icon}</span><span>${h(label)}</span></button>`).join('')}<div class="sidebar-bottom"><span class="status-dot"></span><b>إدارة متكاملة</b><div style="margin-top:5px;color:#89a7c6">الفروع · العمليات · المخزون · التقارير</div></div></aside>`}
-function syncSidebar(){let app=q('app'),side=q('sidebar');if(!app||!side)return;app.classList.toggle('nav-collapsed',sidebarHidden);side.classList.toggle('open',mobileSidebarOpen);let scr=q('navscrim');if(scr)scr.classList.toggle('visible',mobileSidebarOpen);let btn=q('navtoggle');if(btn){btn.setAttribute('aria-expanded',String(window.matchMedia('(max-width:960px)').matches?mobileSidebarOpen:!sidebarHidden));btn.setAttribute('title',(sidebarHidden||!mobileSidebarOpen)?'إظهار القائمة الجانبية':'إخفاء القائمة الجانبية')}}
+function syncSidebar(){let app=q('app'),side=q('sidebar');if(!app||!side)return;app.classList.toggle('nav-collapsed',sidebarHidden);side.classList.toggle('open',mobileSidebarOpen);let scr=q('navscrim');if(scr)scr.classList.toggle('visible',mobileSidebarOpen);document.body.classList.toggle('nili-menu-open',mobileSidebarOpen&&window.matchMedia('(max-width:1100px)').matches);let btn=q('navtoggle');if(btn){btn.setAttribute('aria-expanded',String(window.matchMedia('(max-width:1100px)').matches?mobileSidebarOpen:!sidebarHidden));btn.setAttribute('title',(sidebarHidden||!mobileSidebarOpen)?'إظهار القائمة الجانبية':'إخفاء القائمة الجانبية')}}
 function render(){q('app').innerHTML=sidebar()+`<div class="nav-scrim" id="navscrim"></div><main class="main">${mainHeader()}<div class="container" id="page">${({dashboard:dashboardHTML,entry:entryHTML,transactions:transactionsHTML,inventory:inventoryHTML,suppliers:suppliersHTML,journal:journalHTML,reports:reportsHTML,settings:settingsHTML})[view]()}</div></main>`;wire();syncSidebar()}
-function toggleSidebar(){if(window.matchMedia('(max-width:960px)').matches){mobileSidebarOpen=!mobileSidebarOpen}else{sidebarHidden=!sidebarHidden;try{sessionStorage.setItem('nili_nav_hidden',sidebarHidden?'1':'0')}catch(_){}}syncSidebar()}
+function toggleSidebar(){if(window.matchMedia('(max-width:1100px)').matches){mobileSidebarOpen=!mobileSidebarOpen}else{sidebarHidden=!sidebarHidden;try{sessionStorage.setItem('nili_nav_hidden',sidebarHidden?'1':'0')}catch(_){}}syncSidebar()}
 function navTo(to){view=to;filterText='';render();window.scrollTo({top:0,behavior:'instant'})}
 function kpi(label,value,sub,wash='#eaf7f6'){return `<div class="kpi" style="--wash:${wash}"><div class="kpi-label">${h(label)}</div><div class="kpi-number">${value}</div><div class="kpi-sub">${h(sub)}</div></div>`}
 function pill(t,c=''){return `<span class="pill ${c}">${h(t)}</span>`}
@@ -489,6 +716,6 @@ root.addEventListener('change',e=>{let x=e.target;if(x.dataset.draft){draft[x.da
 function wire(){if(view==='entry'&&pendingFiles.length&&q('filelabels'))q('filelabels').innerHTML=pendingFiles.map(f=>pill(f.name,'blue')).join(' ')}
 addListeners();render();
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(quickModal){closeQuickModal();return}if(mobileSidebarOpen){mobileSidebarOpen=false;syncSidebar()}}if(e.key==='Enter'&&quickModal&&e.target?.closest('#quickshade')&&e.target?.tagName==='INPUT'){e.preventDefault();saveQuickModal()}});
-window.addEventListener('resize',()=>{if(window.innerWidth>960&&mobileSidebarOpen){mobileSidebarOpen=false;syncSidebar()}});
+window.addEventListener('resize',()=>{if(window.innerWidth>1100&&mobileSidebarOpen){mobileSidebarOpen=false;syncSidebar()}});
 </script>
 </body></html>
